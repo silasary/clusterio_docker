@@ -2,7 +2,7 @@ FROM node:20-alpine
 RUN apk add --no-cache curl
 
 RUN adduser -D clusterio
-RUN mkdir /clusterio && chown clusterio:clusterio /clusterio
+RUN mkdir /clusterio && chown clusterio:clusterio /clusterio && mkdir /factorio && chown clusterio:clusterio /factorio
 USER clusterio
 
 WORKDIR /clusterio
