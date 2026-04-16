@@ -7,14 +7,14 @@ if [ "$CLUSTERIO_MODE" = "controller" ] || [ "$CLUSTERIO_MODE" = "standalone" ];
         npm init "@clusterio" -- --mode $CLUSTERIO_MODE --admin $CLUSTERIO_ADMIN --http-port 8080 --publicAddress $myIP --no-download-headless --factorio-dir /factorio/factorio --remoteNpm --plugins $CLUSTERIO_PLUGINS
     fi
     if [ "$CLUSTERIO_MODE" = "standalone" ]; then
-        /bin/sh ./run-host.sh &
+        /bin/bash ./run-host.sh &
     fi
-    /bin/sh ./run-controller.sh
+    /bin/bash ./run-controller.sh
 elif [ "$CLUSTERIO_MODE" = "host" ]; then
     if [ ! -f /clusterio/config-host.json ]; then
         npm init "@clusterio" -- --mode host --controller-token $CLUSTERIO_HOST_CONTROLLER_TOKEN --controllerUrl $CLUSTERIO_HOST_CONTROLLER_URL --hostName $CLUSTERIO_HOST_NAME --no-download-headless --factorio-dir /factorio/factorio --remoteNpm --plugins $CLUSTERIO_PLUGINS
     fi
-    /bin/sh ./run-host.sh
+    /bin/bash ./run-host.sh
 else
     echo "Invalid CLUSTERIO_MODE: $CLUSTERIO_MODE"
     exit 1
